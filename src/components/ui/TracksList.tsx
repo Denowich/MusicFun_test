@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import { TrackItem } from './TrackItem';
+import { TrackItem } from './TrackItem';
 
 export const TracksList = () => {
       const [selectedTrackId, setSelectedTrackId] = useState(null);
@@ -47,62 +47,27 @@ export const TracksList = () => {
       return (
             <div>
                   <h1>MusicFun</h1>
-                  <button onClick={handleClickReset}>Reset</button>
+                  <button onClick={handleClickReset}>Reset selection</button>
 
                   <div>
                         <ul>
                               <ol>
                                     {tracks.map((track) => {
-                                          // const handleClick = () => {
-                                          //       setSelectedTrackId(track.id);
-                                          // };
+                                          const handleClick = () => {
+                                                setSelectedTrackId?.(track.id);
+                                          };
                                           return (
-                                                <li
+                                                <TrackItem
                                                       key={track.id}
-                                                      style={{
-                                                            border:
-                                                                  selectedTrackId ===
-                                                                  track.id
-                                                                        ? '3px solid green'
-                                                                        : 'none',
-                                                      }}
-                                                >
-                                                      <div
-                                                            onClick={() => {
-                                                                  setSelectedTrackId(
-                                                                        track.id,
-                                                                  );
-                                                            }}
-                                                      >
-                                                            {
-                                                                  track
-                                                                        .attributes
-                                                                        .title
-                                                            }
-                                                      </div>
-                                                      <div>
-                                                            <audio
-                                                                  controls
-                                                                  src={
-                                                                        track
-                                                                              .attributes
-                                                                              .attachments[0]
-                                                                              .url
-                                                                  }
-                                                            ></audio>
-                                                      </div>
-                                                </li>
-                                                // <TrackItem
-                                                //       key={track.id}
-                                                //       track={track}
-                                                //       selectedTrackId={
-                                                //             selectedTrackId
-                                                //       }
-                                                //       handleClick={handleClick}
-                                                //       onTrackSelect={
-                                                //             onTrackSelect
-                                                //       }
-                                                // />
+                                                      track={track}
+                                                      selectedTrackId={
+                                                            selectedTrackId
+                                                      }
+                                                      handleClick={handleClick}
+                                                      //       onTrackSelect={
+                                                      //             onTrackSelect
+                                                      //       }
+                                                />
                                           );
                                     })}
                               </ol>
