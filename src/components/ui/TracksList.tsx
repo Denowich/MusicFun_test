@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { TrackItem } from './TrackItem';
 
 export const TracksList = () => {
       const [selectedTrackId, setSelectedTrackId] = useState(null);
@@ -40,10 +39,6 @@ export const TracksList = () => {
             setSelectedTrackId?.(null);
       };
 
-      // const handleClick = (trackId: string) => {
-      //       selectedTrackId?.(trackId);
-      // };
-
       return (
             <div>
                   <h1>MusicFun</h1>
@@ -57,17 +52,39 @@ export const TracksList = () => {
                                                 setSelectedTrackId?.(track.id);
                                           };
                                           return (
-                                                <TrackItem
+                                                <li
                                                       key={track.id}
-                                                      track={track}
-                                                      selectedTrackId={
-                                                            selectedTrackId
-                                                      }
-                                                      handleClick={handleClick}
-                                                      //       onTrackSelect={
-                                                      //             onTrackSelect
-                                                      //       }
-                                                />
+                                                      style={{
+                                                            border:
+                                                                  selectedTrackId ===
+                                                                  track.id
+                                                                        ? '3px solid green'
+                                                                        : 'none',
+                                                      }}
+                                                >
+                                                      <div
+                                                            onClick={
+                                                                  handleClick
+                                                            }
+                                                      >
+                                                            {
+                                                                  track
+                                                                        .attributes
+                                                                        .title
+                                                            }
+                                                      </div>
+                                                      <div>
+                                                            <audio
+                                                                  controls
+                                                                  src={
+                                                                        track
+                                                                              .attributes
+                                                                              .attachments[0]
+                                                                              .url
+                                                                  }
+                                                            ></audio>
+                                                      </div>
+                                                </li>
                                           );
                                     })}
                               </ol>
