@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const TracksList = () => {
-      const [selectedTrackId, setSelectedTrackId] = useState(null);
+export const TracksList = (props) => {
       const [tracks, setTracks] = useState(null);
 
       useEffect(() => {
@@ -35,9 +34,7 @@ export const TracksList = () => {
             );
       }
 
-      const handleClickReset = () => {
-            setSelectedTrackId?.(null);
-      };
+      const handleClickReset = () => {};
 
       return (
             <div>
@@ -49,14 +46,14 @@ export const TracksList = () => {
                               <ol>
                                     {tracks.map((track) => {
                                           const handleClick = () => {
-                                                setSelectedTrackId?.(track.id);
+                                                props.onTrackSelect?.(track.id);
                                           };
                                           return (
                                                 <li
                                                       key={track.id}
                                                       style={{
                                                             border:
-                                                                  selectedTrackId ===
+                                                                  props.selectedTrackId ===
                                                                   track.id
                                                                         ? '3px solid green'
                                                                         : 'none',

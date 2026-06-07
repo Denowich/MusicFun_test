@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export const TrackDetail = () => {
+export const TrackDetail = (props) => {
       const [trackDetail, setTrackDetail] = useState(null);
-      const [selectedTrackId, setSelectedTrackId] = useState(null);
+      const selectedTrackId = props.trackId;
 
       useEffect(() => {
             fetch(
@@ -10,8 +10,7 @@ export const TrackDetail = () => {
                         selectedTrackId,
                   {
                         headers: {
-                              'api-key':
-                                    '00b55d65-518b-49dd-b73e-845e02e9861b-',
+                              'api-key': '00b55d65-518b-49dd-b73e-845e02e9861b',
                         },
                   },
             )
