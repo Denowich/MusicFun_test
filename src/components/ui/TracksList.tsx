@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const TracksList = (props) => {
+export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
   const [tracks, setTracks] = useState(null);
 
   useEffect(() => {
@@ -20,22 +20,22 @@ export const TracksList = (props) => {
     return (
       <div>
         <h1>MusicFun</h1>
-        <span>Loading</span>
+        <span>Loading...</span>
       </div>
     );
   }
 
-  // if (tracks.length === 0) {
-  //       return (
-  //             <div>
-  //                   <h1>MusicFun</h1>
-  //                   <span>No tracks</span>
-  //             </div>
-  //       );
-  // }
+  if (tracks.length === 0) {
+    return (
+      <div>
+        <h1>MusicFun</h1>
+        <span>No tracks</span>
+      </div>
+    );
+  }
 
   const handleClickReset = () => {
-    props.onTrackSelect?.(null);
+    onTrackSelect?.(null);
   };
 
   return (
@@ -48,14 +48,14 @@ export const TracksList = (props) => {
           <ol>
             {tracks.map((track) => {
               const handleClick = () => {
-                props.onTrackSelect?.(track.id);
+                onTrackSelect?.(track.id);
               };
               return (
                 <li
                   key={track.id}
                   style={{
                     border:
-                      props.selectedTrackId === track.id
+                      selectedTrackId === track.id
                         ? '3px solid green'
                         : '3px solid white',
                   }}
