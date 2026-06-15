@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { TrackItem } from './TrackItem';
 
 export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
   const [tracks, setTracks] = useState(null);
@@ -51,23 +52,11 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
                 onTrackSelect?.(track.id);
               };
               return (
-                <li
-                  key={track.id}
-                  style={{
-                    border:
-                      selectedTrackId === track.id
-                        ? '3px solid green'
-                        : '3px solid white',
-                  }}
-                >
-                  <div onClick={handleClick}>{track.attributes.title}</div>
-                  <div>
-                    <audio
-                      controls
-                      src={track.attributes.attachments[0].url}
-                    ></audio>
-                  </div>
-                </li>
+                <TrackItem
+                  track={track}
+                  selectedTrackId={selectedTrackId}
+                  handleClick={handleClick}
+                />
               );
             })}
           </ol>
