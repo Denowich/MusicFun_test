@@ -54,7 +54,11 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
               return (
                 <TrackItem
                   track={track}
-                  selectedTrackId={selectedTrackId}
+                  isSelect={
+                    selectedTrackId === track.id
+                      ? '3px solid green'
+                      : '3px solid white'
+                  }
                   onSelect={handleClick}
                 />
               );
