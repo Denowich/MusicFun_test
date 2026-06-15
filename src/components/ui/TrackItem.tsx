@@ -1,21 +1,21 @@
-export const TrackItem = (props) => {
+export const TrackItem = ({ track, selectedTrackId, onSelect }) => {
+  const handleClick = () => {
+    onSelect();
+  };
   return (
     <div>
       <li
-        key={props.track.id}
+        key={track.id}
         style={{
           border:
-            props.selectedTrackId === props.track.id
+            selectedTrackId === track.id
               ? '3px solid green'
               : '3px solid white',
         }}
       >
-        <div onClick={props.handleClick}>{props.track.attributes.title}</div>
+        <div onClick={handleClick}>{track.attributes.title}</div>
         <div>
-          <audio
-            controls
-            src={props.track.attributes.attachments[0].url}
-          ></audio>
+          <audio controls src={track.attributes.attachments[0].url}></audio>
         </div>
       </li>
     </div>

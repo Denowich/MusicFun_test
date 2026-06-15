@@ -55,7 +55,7 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
                 <TrackItem
                   track={track}
                   selectedTrackId={selectedTrackId}
-                  handleClick={handleClick}
+                  onSelect={handleClick}
                 />
               );
             })}
