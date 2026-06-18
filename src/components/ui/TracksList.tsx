@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
-import { TrackItem } from './TrackItem';
+import { TrackItem, type GetTracksListOutputData } from './TrackItem';
 
-export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
-  const [tracks, setTracks] = useState(null);
+type Props = {
+  selectedTrackId: string | null;
+  onTrackSelect: (id: string | null) => void;
+};
+
+export const TracksList = ({ selectedTrackId, onTrackSelect }: Props) => {
+  const [tracks, setTracks] = useState<GetTracksListOutputData[] | null>(null);
 
   useEffect(() => {
     fetch(
@@ -38,7 +43,7 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
   const handleClickReset = () => {
     onTrackSelect?.(null);
   };
-  const handleClick = (trackId) => {
+  const handleClickSelect = (trackId: string) => {
     onTrackSelect?.(trackId);
   };
 
@@ -54,12 +59,8 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
               return (
                 <TrackItem
                   track={track}
-                  isSelect={
-                    selectedTrackId === track.id
-                      ? '3px solid green'
-                      : '3px solid white'
-                  }
-                  onSelect={handleClick}
+                  isSelect={selectedTrackId === track.id}
+                  onSelect={handleClickSelect}
                 />
               );
             })}

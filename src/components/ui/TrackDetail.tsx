@@ -1,7 +1,23 @@
 import { useEffect, useState } from 'react';
 
-export const TrackDetail = ({ trackId }) => {
-  const [trackDetail, setTrackDetail] = useState(null);
+type TrackDetailAttributes = {
+  title: string;
+  lyrics: string | null;
+};
+
+type GetTrackDetailOutput = {
+  id: string;
+  attributes: TrackDetailAttributes;
+};
+
+type Props = {
+  trackId: string | null;
+};
+
+export const TrackDetail = ({ trackId }: Props) => {
+  const [trackDetail, setTrackDetail] = useState<GetTrackDetailOutput | null>(
+    null,
+  );
 
   useEffect(() => {
     fetch(
