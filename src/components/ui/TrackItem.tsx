@@ -1,16 +1,4 @@
-type Attachments = {
-  url: string;
-};
-
-type TracksListAttributes = {
-  title: string;
-  attachments: Attachments[];
-};
-
-export type GetTracksListOutputData = {
-  id: string;
-  attributes: TracksListAttributes;
-};
+import type { GetTracksListOutputData } from '../dal/api';
 
 type Props = {
   track: GetTracksListOutputData;
