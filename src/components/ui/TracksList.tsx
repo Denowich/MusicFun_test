@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TrackItem } from './TrackItem';
-import { getTracks, type GetTracksListOutputData } from '../dal/api';
+import { getTracks, type GetTracksListOutput } from '../dal/api';
 
 type Props = {
   selectedTrackId: string | null;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const TracksList = ({ selectedTrackId, onTrackSelect }: Props) => {
-  const [tracks, setTracks] = useState<GetTracksListOutputData[] | null>(null);
+  const [tracks, setTracks] = useState<GetTracksListOutput[] | null>(null);
 
   useEffect(() => {
     getTracks().then((json) => setTracks(json.data));

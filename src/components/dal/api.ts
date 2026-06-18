@@ -7,15 +7,19 @@ type TracksListAttributes = {
   attachments: Attachments[];
 };
 
-export type GetTracksListOutputData = {
+export type GetTracksListOutput = {
   id: string;
   attributes: TracksListAttributes;
+};
+
+type GetTracksListOutputData = {
+  data: GetTracksListOutput[];
 };
 
 // ============================================================================
 
 export const getTracks = () => {
-  const promise: Promise<{ data: GetTracksListOutputData[] }> = fetch(
+  const promise: Promise<GetTracksListOutputData> = fetch(
     'https://musicfun.it-incubator.app/api/1.0/playlists/tracks?pageSize=5',
     {
       headers: {
@@ -38,8 +42,14 @@ export type GetTrackDetailOutput = {
   attributes: TrackDetailAttributes;
 };
 
+type GetTrackDetailOutputData = {
+  data: GetTrackDetailOutput;
+};
+
+//=============================================================================
+
 export const getTrack = (trackId: string | null) => {
-  const promise: Promise<{ data: GetTrackDetailOutput }> = fetch(
+  const promise: Promise<GetTrackDetailOutputData> = fetch(
     'https://musicfun.it-incubator.app/api/1.0/playlists/tracks/' + trackId,
     {
       headers: {

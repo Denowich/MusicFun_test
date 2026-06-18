@@ -1,7 +1,7 @@
-import type { GetTracksListOutputData } from '../dal/api';
+import type { GetTracksListOutput } from '../dal/api';
 
 type Props = {
-  track: GetTracksListOutputData;
+  track: GetTracksListOutput;
   isSelect: boolean;
   onSelect: (trackId: string) => void;
 };
