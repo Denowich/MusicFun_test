@@ -1,6 +1,6 @@
 export const TrackItem = ({ track, isSelect, onSelect }) => {
   const handleClick = () => {
-    onSelect();
+    onSelect(track.id);
   };
   return (
     <div>
@@ -8,6 +8,9 @@ export const TrackItem = ({ track, isSelect, onSelect }) => {
         key={track.id}
         style={{
           border: isSelect,
+          marginBottom: '20px',
+          padding: '10px',
+          borderRadius: '15px',
         }}
       >
         <div onClick={handleClick}>{track.attributes.title}</div>

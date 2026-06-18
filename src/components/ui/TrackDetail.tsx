@@ -8,7 +8,7 @@ export const TrackDetail = ({ trackId }) => {
       'https://musicfun.it-incubator.app/api/1.0/playlists/tracks/' + trackId,
       {
         headers: {
-          'api-key': '00b55d65-518b-49dd-b73e-845e02e9861b',
+          'api-key': '00b55d65-518b-49dd-b73e-845e02e9861b-',
         },
       },
     )

@@ -38,6 +38,9 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
   const handleClickReset = () => {
     onTrackSelect?.(null);
   };
+  const handleClick = (trackId) => {
+    onTrackSelect?.(trackId);
+  };
 
   return (
     <div>
@@ -48,9 +51,6 @@ export const TracksList = ({ selectedTrackId, onTrackSelect }) => {
         <ul>
           <ol>
             {tracks.map((track) => {
-              const handleClick = () => {
-                onTrackSelect?.(track.id);
-              };
               return (
                 <TrackItem
                   track={track}
